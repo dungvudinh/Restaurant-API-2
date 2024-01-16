@@ -26,7 +26,7 @@ namespace Restaurant_API_2.Models
         }
     
         public virtual DbSet<account> accounts { get; set; }
-        public virtual DbSet<food> foods { get; set; }
         public virtual DbSet<drink_type> drink_type { get; set; }
+        public virtual DbSet<food> foods { get; set; }
     }
 }

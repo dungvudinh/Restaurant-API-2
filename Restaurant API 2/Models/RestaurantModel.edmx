@@ -14,6 +14,9 @@
           <Property Name="password" Type="varchar" MaxLength="50" />
           <Property Name="full_name" Type="nvarchar" MaxLength="30" />
           <Property Name="role" Type="int" />
+          <Property Name="created_at" Type="datetime" />
+          <Property Name="updated_at" Type="datetime" />
+          <Property Name="deleted_at" Type="datetime" />
         </EntityType>
         <EntityType Name="drink_type">
           <Key>
@@ -48,6 +51,11 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="RestaurantDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="RestaurantDatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="accounts" EntityType="RestaurantDatabaseModel.account" />
+          <EntitySet Name="drink_type" EntityType="RestaurantDatabaseModel.drink_type" />
+          <EntitySet Name="foods" EntityType="RestaurantDatabaseModel.food" />
+        </EntityContainer>
         <EntityType Name="account">
           <Key>
             <PropertyRef Name="id" />
@@ -57,6 +65,19 @@
           <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="full_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="role" Type="Int32" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <Property Name="deleted_at" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="drink_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="updated_at" Type="DateTime" Precision="3" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="deleted_at" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="food">
           <Key>
@@ -72,21 +93,6 @@
           <Property Name="updated_at" Type="DateTime" Precision="3" />
           <Property Name="deleted_at" Type="DateTime" Precision="3" />
         </EntityType>
-        <EntityContainer Name="RestaurantDatabaseEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="accounts" EntityType="Self.account" />
-          <EntitySet Name="foods" EntityType="Self.food" />
-          <EntitySet Name="drink_type" EntityType="RestaurantDatabaseModel.drink_type" />
-        </EntityContainer>
-        <EntityType Name="drink_type">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="updated_at" Type="DateTime" Precision="3" />
-          <Property Name="created_at" Type="DateTime" Precision="3" />
-          <Property Name="deleted_at" Type="DateTime" Precision="3" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -96,26 +102,14 @@
           <EntitySetMapping Name="accounts">
             <EntityTypeMapping TypeName="RestaurantDatabaseModel.account">
               <MappingFragment StoreEntitySet="account">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="username" ColumnName="username" />
-                <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="full_name" ColumnName="full_name" />
-                <ScalarProperty Name="role" ColumnName="role" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="foods">
-            <EntityTypeMapping TypeName="RestaurantDatabaseModel.food">
-              <MappingFragment StoreEntitySet="food">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="image" ColumnName="image" />
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="food_type_id" ColumnName="food_type_id" />
-                <ScalarProperty Name="price" ColumnName="price" />
-                <ScalarProperty Name="created_at" ColumnName="created_at" />
-                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
                 <ScalarProperty Name="deleted_at" ColumnName="deleted_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="full_name" ColumnName="full_name" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -125,6 +119,21 @@
                 <ScalarProperty Name="deleted_at" ColumnName="deleted_at" />
                 <ScalarProperty Name="created_at" ColumnName="created_at" />
                 <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="foods">
+            <EntityTypeMapping TypeName="RestaurantDatabaseModel.food">
+              <MappingFragment StoreEntitySet="food">
+                <ScalarProperty Name="deleted_at" ColumnName="deleted_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="food_type_id" ColumnName="food_type_id" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="image" ColumnName="image" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>

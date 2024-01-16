@@ -19,5 +19,8 @@ namespace Restaurant_API_2.Models
         public string password { get; set; }
         public string full_name { get; set; }
         public Nullable<int> role { get; set; }
+        public Nullable<System.DateTime> created_at { get; set; }
+        public Nullable<System.DateTime> updated_at { get; set; }
+        public Nullable<System.DateTime> deleted_at { get; set; }
     }
 }

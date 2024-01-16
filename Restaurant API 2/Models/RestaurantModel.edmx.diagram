@@ -5,9 +5,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="97a4cac2546145ab923197bdd16edd7b" Name="Diagram1">
-        <EntityTypeShape EntityType="RestaurantDatabaseModel.account" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestaurantDatabaseModel.food" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestaurantDatabaseModel.drink_type" Width="1.5" PointX="5.625" PointY="0.875" />
+        <EntityTypeShape EntityType="RestaurantDatabaseModel.account" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="RestaurantDatabaseModel.drink_type" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="RestaurantDatabaseModel.food" Width="1.5" PointX="5.375" PointY="0.875" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

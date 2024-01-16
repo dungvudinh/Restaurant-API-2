@@ -16,7 +16,7 @@ namespace Restaurant_API_2.Controllers
     {
         private RestaurantDatabaseEntities db = new RestaurantDatabaseEntities();
 
-        // GET: api/accountsAPI
+        // GET: api/accountsAPI```````````````````
         public IQueryable<account> Getaccounts()
         {
             return db.accounts;
